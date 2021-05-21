@@ -1,0 +1,44 @@
+<h3 ng-class="{loadingbar:loading}"><a href="#/home">Guestbook</a> <span ng-show="title"> => {{title}}</span></h3>
+
+<div class="row">
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<td>ID</td>
+				<td>{{message.ID}}</td>
+			</tr>
+			<tr>
+				<td>Created</td>
+				<td>{{message.Created|moment:'YYYY-MM-DD HH:mm:ss'}}</td>
+			</tr>
+			<tr>
+				<td>Author</td>
+				<td>{{message.Author}}</td>
+			</tr>
+			<tr>
+				<td>Title</td>
+				<td>{{message.Title}}</td>
+			</tr>
+			<tr>
+				<td>Content</td>
+				<td>{{message.Content}}</td>
+			</tr>
+			<tr>
+				<td>Rating</td>
+				<td><span ng-show="message.Rating >= 0">{{message.Rating.toFixed(2)}}</span><span ng-show="message.Rating < 0">unknown</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+Set rating:
+<button class="btn" ng-class="{'btn-warning':rating == 1}" ng-click="rating=1">1 star</button>
+<button class="btn" ng-class="{'btn-warning':rating == 2}" ng-click="rating=2">2 star</button>
+<button class="btn" ng-class="{'btn-warning':rating == 3}" ng-click="rating=3">3 star</button>
+<button class="btn" ng-class="{'btn-warning':rating == 4}" ng-click="rating=4">4 star</button>
+<button class="btn" ng-class="{'btn-warning':rating == 5}" ng-click="rating=5">5 star</button>
+
+<br><br>
+
+<a href="#/message/view/{{message.ID}}" class="btn btn-default">back</a>
+<button class="btn btn-success" ng-click="addRating()">vote</button>

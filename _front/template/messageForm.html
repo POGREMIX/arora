@@ -1,0 +1,24 @@
+<h3 ng-class="{loadingbar:loading}"><a href="#/home">Guestbook</a> <span ng-show="title"> => {{title}}</span></h3>
+
+<div class="row">
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<td>Author</td>
+				<td><input type="text" class="form-control" ng-model="message.Author"></td>
+			</tr>
+			<tr>
+				<td>Title</td>
+				<td><input type="text" class="form-control" ng-model="message.Title"></td>
+			</tr>
+			<tr>
+				<td>Content</td>
+				<td><input type="text" class="form-control" ng-model="message.Content"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<a class="btn btn-default" ng-show="message.ID" href="#/message/view/{{message.ID}}">back</a>
+<a class="btn btn-default" ng-show="!message.ID" href="#/home">back</a>
+<button class="btn btn-success" ng-click="saveMessage()">save</button>
