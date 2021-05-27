@@ -2,23 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TestGuestbook.DB.Mapping
 {
-    public class MessageMap : ClassMap<Message>
+    public class CommentMap : ClassMap<Comment>
     {
-        public MessageMap()
+        public CommentMap()
         {
             Id(x => x.ID).GeneratedBy.GuidComb();//.Assigned();
-            Map(x => x.Created);
             Map(x => x.Author);
-            Map(x => x.Title);
             Map(x => x.Content);
-
-            HasMany(x => x.Comments).Cascade.AllDeleteOrphan();
-            HasMany(x => x.Ratings).Cascade.AllDeleteOrphan();
+            Map(x => x.Created);//если упало, значит Created="00000000-0000-0000-0000-000000000000"
         }
     }
 }

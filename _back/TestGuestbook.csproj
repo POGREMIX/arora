@@ -55,14 +55,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Comment.cs" />
     <Compile Include="Data\Message.cs" />
-    <Compile Include="DB\Controller.cs" />
+    <Compile Include="Data\Rating.cs" />
+    <Compile Include="DB\Comment.cs" />
+    <Compile Include="DB\CommentController.cs" />
+    <Compile Include="DB\MessageController.cs" />
+    <Compile Include="DB\Mapping\CommentMap.cs" />
     <Compile Include="DB\Mapping\MessageMap.cs" />
+    <Compile Include="DB\Mapping\RatingMap.cs" />
     <Compile Include="DB\Message.cs" />
+    <Compile Include="DB\Rating.cs" />
+    <Compile Include="DB\RatingController.cs" />
+    <Compile Include="Form\Comment.cs" />
     <Compile Include="Form\Message.cs" />
+    <Compile Include="Form\Rating.cs" />
     <Compile Include="GuestbookModule.cs" />
+    <Compile Include="Handler\Comment.cs" />
     <Compile Include="Handler\Message.cs" />
     <Compile Include="Handler\Main.cs" />
+    <Compile Include="Handler\Rating.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -14,9 +14,8 @@ namespace TestGuestbook
         public bool RegisterModule(HttpServer server)
         {
             server.RegisterRequestHandler<TestGuestbook.Handler.Message>("/api/message");
-            /* TODO */
-			//server.RegisterRequestHandler<TestGuestbook.Handler.Rating>("/api/rating");
-            //server.RegisterRequestHandler<TestGuestbook.Handler.Comment>("/api/comment");
+			server.RegisterRequestHandler<TestGuestbook.Handler.Rating>("/api/rating");
+            server.RegisterRequestHandler<TestGuestbook.Handler.Comment>("/api/comment");
 
             return true;
         }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace TestGuestbook.Data
 {
-    [Guid("6D07675D-1F17-482D-A576-2DDBE5C8C7DF")]
-    [CJE.Serializable(CJE.Serializable.Politics.AllExceptExcluded)]
+    //[Guid("6D07675D-1F17-482D-A576-2DDBE5C8C7DF")]
+    //[CJE.Serializable(CJE.Serializable.Politics.AllExceptExcluded)]
     public class Message : CJE.ISerializable
     {
         public Guid ID { get; set; }
@@ -17,7 +17,7 @@ namespace TestGuestbook.Data
         public string Title { get; set; }
         public string Content { get; set; }
 
-        //public IList<Data.Comment> Comments { get; set; }
+        public IList<Data.Comment> Comments { get; set; }
         public int CommentsCount { get; set; }
         public double Rating { get; set; }
 

@@ -16,12 +16,12 @@ namespace TestGuestbook.Handler
             Guid id = Data.Get.GetGuid("id");
             if (id == Guid.Empty)
             {
-                List<Data.Message> messages = DB.Controller.LoadMessageList(Server.DBSession);
+                List<Data.Message> messages = DB.MessageController.LoadMessageList(Server.DBSession);
                 return new CJE.Http.RequestAnswer.Json(messages);
             }
             else
             {
-                Data.Message message = DB.Controller.LoadMessage(Server.DBSession, id);
+                Data.Message message = DB.MessageController.LoadMessage(Server.DBSession, id);
                 return new CJE.Http.RequestAnswer.Data(message);
             }
         }
@@ -31,7 +31,7 @@ namespace TestGuestbook.Handler
             Form.Message inputData = new Form.Message(Data.Post.Input);
             Data.Message inputMessage = inputData.ToData();
 
-            Data.Message message = DB.Controller.SaveMessage(Server.DBSession, inputMessage);
+            Data.Message message = DB.MessageController.SaveMessage(Server.DBSession, inputMessage);
 
             return new CJE.Http.RequestAnswer.Json(message);
         }
@@ -40,7 +40,7 @@ namespace TestGuestbook.Handler
         {
             Guid id = Data.Get.GetGuid("id");
 
-            Data.Message message = DB.Controller.DeleteMessage(Server.DBSession, id);
+            Data.Message message = DB.MessageController.DeleteMessage(Server.DBSession, id);
 
             return new CJE.Http.RequestAnswer.Json(message);
         }

@@ -14,8 +14,8 @@ namespace TestGuestbook.DB
         public virtual string Title { get; set; }
         public virtual string Content { get; set; }
 
-        //public virtual IList<Comment> Comments { get; set; }
-        //public virtual IList<Rating> Ratings { get; set; }
+        public virtual IList<DB.Comment> Comments { get; set; }
+        public virtual IList<DB.Rating> Ratings { get; set; }
 
         public Message() { }
         public Message(Data.Message source)
@@ -25,6 +25,8 @@ namespace TestGuestbook.DB
             this.Author = source.Author;
             this.Title = source.Title;
             this.Content = source.Content;
+            this.Comments = new List<DB.Comment>();
+            this.Ratings = new List<DB.Rating>();
         }
 
         public virtual Data.Message ToData(bool withComments, bool withRating)
@@ -37,9 +39,9 @@ namespace TestGuestbook.DB
                 Title = this.Title,
                 Content = this.Content,
 
-                //Comments = (withComments && this.Comments != null && NHibernate.NHibernateUtil.IsInitialized(this.Comments)) ? this.Comments.Select(x => x.ToData(false)).ToList() : new List<Data.Comment>(),
-                //CommentsCount = (this.Comments != null && NHibernate.NHibernateUtil.IsInitialized(this.Comments)) ? this.Comments.Count : -1,
-                //Rating = (withRating && this.Ratings != null && this.Ratings.Count > 0) ? this.Ratings.Average(x => x.Value) : -1d,
+                Comments = (withComments && this.Comments != null && NHibernate.NHibernateUtil.IsInitialized(this.Comments)) ? this.Comments.Select(x => x.ToData(false)).ToList() : new List<Data.Comment>(),
+                CommentsCount = (this.Comments != null && NHibernate.NHibernateUtil.IsInitialized(this.Comments)) ? this.Comments.Count : -1,
+                Rating = (withRating && this.Ratings != null && this.Ratings.Count > 0) ? this.Ratings.Average(x => x.Value) : -1d,
             };
         }
     }
