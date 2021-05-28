@@ -21,6 +21,10 @@ namespace TestGuestbook.DB
         public static Data.Message LoadMessage(IDBSession dbs, Guid id)
         {
             DB.Message dbMessage = dbs.Session.QueryOver<DB.Message>().Fetch(x => x.Comments).Eager.Where(x => x.ID == id).SingleOrDefault<DB.Message>();
+            if(dbMessage == null)
+            {
+                throw new Exception("Сообщение не найдено по полю id");
+            }
             Data.Message message = dbMessage?.ToData(true, true);
             return message;
         }

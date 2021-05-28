@@ -21,7 +21,15 @@ namespace TestGuestbook.Handler
             }
             else
             {
-                Data.Message message = DB.MessageController.LoadMessage(Server.DBSession, id);
+                Data.Message message = null;
+                try 
+                {
+                    message = DB.MessageController.LoadMessage(Server.DBSession, id);
+                } catch(Exception ex)
+                {
+                    return new CJE.Http.RequestAnswer.JsonError(400, ex.Message);
+                }
+                
                 return new CJE.Http.RequestAnswer.Data(message);
             }
         }
